@@ -10,4 +10,6 @@ function closeNav() {
   document.getElementById("main").style.marginLeft = "0";
 }
 
-new MultiSelectTag('countries') 
+new MultiSelectTag('genres') 
+new MultiSelectTag('tags') 
+

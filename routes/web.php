@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TagController;
+use App\Http\Controllers\BookController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\TagsandCategory;
 use App\Http\Controllers\UserController;
@@ -51,7 +52,8 @@ Route::post('/TagsAndGenre/AddGenre',[CategoryController::class, 'add'])->name('
 
 
 //add book
-Route::get('/addBoook',[TagsandCategory::class, 'add_book'])->name('add_boook');
+Route::get('/addBoook',[TagsandCategory::class, 'add_book'])->name('add_book');
+Route::post('/addBook/add',[BookController::class, 'add'])->name('insert_book');
 
 
 

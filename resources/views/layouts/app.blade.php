@@ -28,7 +28,7 @@
 
             <a href="{{ route('show.user') }}">Users</a>
 
-            <a href="{{ route('add_boook') }}">New Book</a>
+            <a href="{{ route('add_book') }}">New Book</a>
             <a href="">Books</a>
             <a href="{{ route('tags_and_genres') }}">Tags and Genre</a>
 

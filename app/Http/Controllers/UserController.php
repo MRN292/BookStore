@@ -105,7 +105,7 @@ class UserController extends Controller
 
         // Upload the file to the server
         $imageName = time() . '.' . $request->photo->extension();
-        $request->photo->move(public_path('uploads'), $imageName);
+        $request->photo->move(public_path('Books'), $imageName);
 
         // Save the file name in the user's record
         $user->photo = $imageName;

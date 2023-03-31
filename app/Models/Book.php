@@ -10,6 +10,8 @@ class Book extends Model
 {
     use HasFactory;
 
+    protected $table = 'books';
+
     public function users(): BelongsToMany
     {
         return $this->belongsToMany(User::class, 'user_books');

@@ -8,6 +8,7 @@
     --tw-shadow-color: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
     --border-color: rgb(218, 221, 224);
     font-family: Verdana, sans-serif;
+    /* omargin-top: 10px; */
 }
 
 .mult-select-tag .wrapper {
