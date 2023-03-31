@@ -9,6 +9,7 @@
 
     <link rel="stylesheet" href="{{ asset('css/tailwind.css') }}">
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/multi-select-tag.css') }}">
 
     {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
 
@@ -19,15 +20,17 @@
     <div id="mySidebar" class="sidebar">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         @Auth
-            
+
             <a href="/">Shop</a>
 
             <a href="{{ route('profile.edit') }}">Profile</a>
 
+
             <a href="{{ route('show.user') }}">Users</a>
 
-            <a href="#">Books</a>
-            <a href="#">Tags and Genre</a>
+            <a href="{{ route('add_boook') }}">New Book</a>
+            <a href="">Books</a>
+            <a href="{{ route('tags_and_genres') }}">Tags and Genre</a>
 
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
@@ -45,29 +48,29 @@
     <div id="main">
         <button class="openbtn" onclick="openNav()">&#9776;</button>
         @auth
-
-
             @if (Auth::user()->photo == null)
+                <img class="user-img" src="{{ asset('img/user.png') }}" alt="">
             @else
-                <img class="user-img" src="uploads/{{ Auth::user()->photo }}" alt="">
-                <span class="user-name">{{ Auth::user()->name }}</span>
-                <a class="cart-img" href=""><img src="img/cart.png" alt=""></a>
+                <img class="user-img" src="{{ asset('uploads/' . Auth::user()->photo) }}" alt="">
             @endif
+            <span class="user-name">{{ Auth::user()->name }}</span>
+            <a class="cart-img" href=""><img src="{{ asset('img/cart.png') }}" alt=""></a>
         @else
-            <img class="user-img" src="img/user.png" alt="">
-            <a href="{{route('login')}}">Login</a>
+            <img class="user-img" src="{{ asset('img/user.png') }}" alt="">
+            <a href="{{ route('login') }}">Login</a>
         @endauth
-        
-        
-        
+
+
+
     </div>
 
 
     @yield('content')
 
 
+    <script src="{{ asset('js/multi-select-tag.js') }}"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
 
-    <script src="js/main.js"></script>
 
 </body>
 

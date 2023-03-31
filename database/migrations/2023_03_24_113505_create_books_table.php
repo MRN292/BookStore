@@ -20,6 +20,7 @@ return new class extends Migration
             $table->longText('description');
             $table->integer('pages');
             $table->integer('available')->default(0);
+            $table->integer('created_by');
             $table->timestamps();
             $table->softDeletes();
         });

@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TagController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\TagsandCategory;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,17 +24,36 @@ Route::get('/', function () {
 
 
 Route::get('/users', [UserController::class, 'show'])->name('show.user')->middleware('auth');
-Route::delete('/user/delete/{id}', [UserController::class, 'delete'])->name('delete.user')->middleware('auth');
-route::post('/user/ban/{id}', [UserController::class, 'ban'])->name('ban.user')->middleware('auth');
-route::post('/user/Unban/{id}', [UserController::class, 'Unban'])->name('Unban.user')->middleware('auth');
-// Route::post('/user/edit/{id}', function ($id) {
-//     return view('edit',['id' => $id]);
-// });
-route::post('/user/show_edit/{id}', [UserController::class, 'show_edit'])->name('show_edit.user')->middleware('auth');
 
-route::post('/user/name-edit/{id}', [UserController::class, 'name_edit'])->name('name-edit.user')->middleware('auth');
-route::post('/user/pass-edit/{id}', [UserController::class, 'pass_edit'])->name('pass-edit.user')->middleware('auth');
+// ban and unban and remove users
+Route::delete('/users/delete', [UserController::class, 'delete'])->name('delete.user')->middleware('auth');
+route::post('/users/ban', [UserController::class, 'ban'])->name('ban.user')->middleware('auth');
+route::post('/users/Unban', [UserController::class, 'Unban'])->name('Unban.user')->middleware('auth');
+
+
+//edit password and user
+route::get('/users/show_edit', [UserController::class, 'show_edit'])->name('show_edit.user')->middleware('auth');
+route::post('/users/name-edit', [UserController::class, 'name_edit'])->name('name-edit.user')->middleware('auth');
+route::post('/users/pass-edit', [UserController::class, 'pass_edit'])->name('pass-edit.user')->middleware('auth');
+
 Route::post('/upload/photo', [UserController::class, 'photo'])->name('upload.photo');
+
+//change the role
+Route::post('/users/change-role', [UserController::class, 'change_role'])->name('change.role');
+
+// sort and seach users
+Route::get('/users/search_sort', [UserController::class, 'search_sort'])->name('search.sort');
+
+// tag and category
+Route::get('/TagsAndGenre',[TagsandCategory::class, 'show'])->name('tags_and_genres');
+Route::post('/TagsAndGenre/AddTag',[TagController::class, 'add'])->name('add_tag');
+Route::post('/TagsAndGenre/AddGenre',[CategoryController::class, 'add'])->name('add_genre');
+
+
+//add book
+Route::get('/addBoook',[TagsandCategory::class, 'add_book'])->name('add_boook');
+
+
 
 
 

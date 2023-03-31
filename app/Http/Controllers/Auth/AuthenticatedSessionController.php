@@ -27,11 +27,13 @@ class AuthenticatedSessionController extends Controller
     /**
      * Handle an incoming authentication request.
      */
-    public function store(LoginRequest $request): RedirectResponse
+    public function store(LoginRequest $request)
     {   
         $status=User::where('email', $request->input('email'))->value('status');
-        if($status==0){
+        if($status!=null){
+            if($status==0){
             return redirect()->intended(route('login'))->with('status', "user is banned");
+            }
         }
 
         $request->authenticate();

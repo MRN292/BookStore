@@ -5,7 +5,7 @@
         <div class="max-w-md mx-auto bg-gray-700 p-6 rounded-md shadow-md">
             <h1 class="text-2xl font-bold text-white mb-4">Edit Profile</h1>
 
-            <form method="POST" action="/user/name-edit/{{ $user->id }}">
+            <form method="POST" action="{{route("name-edit.user")}}">
                 @csrf
 
                 {{-- change name --}}
@@ -47,10 +47,7 @@
             </form>
 
             {{-- go back --}}
-            <div class="mt-10">
-                <a role="button" class="bg-red-600 text-white font-bold py-2 px-4 rounded "
-                    href="{{ route('show.user') }}">Back</a>
-            </div>
+
         </div>
     </div>
 @endsection
