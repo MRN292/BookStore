@@ -19,9 +19,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('shop');
-});
+// Route::get('/', function () {
+//     return view('shop');
+// });
 
 
 Route::get('/users', [UserController::class, 'show'])->name('show.user')->middleware('auth');
@@ -59,7 +59,7 @@ Route::post('/addBook/add',[BookController::class, 'add'])->name('insert_book');
 
 //Books 
 
-Route::get('/showBooks',[BookController::class, 'show'])->name('show_books');
+Route::get('/',[BookController::class, 'show'])->name('show_books');
 
 
 
