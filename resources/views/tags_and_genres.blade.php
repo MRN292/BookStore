@@ -10,11 +10,14 @@
                 </h2>
                 <div class=" max-w-sm">
                     {{-- tag --}}
-                    <form method="post" action="{{route('add_tag')}}" class="mt-6 space-y-6">
+                    <form method="post" action="{{ route('add_tag') }}" class="mt-6 space-y-6">
                         @csrf
                         <div>
                             <input name="tag" type="text" class="mt-1 block w-full rounded border-gray-300" />
                         </div>
+                        @if (session('tag'))
+                            <span class='inline-block' style="color:red ">{{ session('tag') }}</span>
+                        @endif
 
                         <div class="flex items-center gap-4">
                             <input type="submit"
@@ -22,6 +25,7 @@
                                 value="ADD">
                         </div>
                     </form>
+
 
                 </div>
                 <div class=" max-w-sm mt-2 scrollable-list p-1 sm:p-8 bg-white shadow  sm:rounded-lg">
@@ -40,11 +44,14 @@
                 </h2>
                 <div class=" max-w-sm">
                     {{-- Genre --}}
-                    <form method="post" action="{{route('add_genre')}}" class="mt-6 space-y-6">
+                    <form method="post" action="{{ route('add_genre') }}" class="mt-6 space-y-6">
                         @csrf
                         <div>
                             <input name="genre" type="text" class="mt-1 block w-full rounded border-gray-300" />
                         </div>
+                        @if (session('genre'))
+                        <span class='inline-block' style="color:red ">{{ session('genre') }}</span>
+                    @endif
 
                         <div class="flex items-center gap-4">
                             <input type="submit"

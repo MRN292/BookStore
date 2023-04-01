@@ -12,14 +12,14 @@
         <div class="flex">
             <div class="search">
                 <button class="bg-gray-800 hover:bg-gray-700 text-white p-2 rounded" type="submit">search</button>
-                <input class=" w-75 rounded" placeholder="search users name" type="text" name="search"
+                <input class=" w-75 rounded border-0" placeholder="search users name" type="text" name="search"
                     value="@isset($search)
                 {{ $search }}
             @endisset" />
             </div>
 
             <div class="sort flex">
-                <select onchange=' this.form.submit();' name="sort" class="sort_box sort-box rounded">
+                <select onchange=' this.form.submit();' name="sort" class="sort_box sort-box rounded  border-0">
                     <option value="Oldest"
                         @isset($sort)
                     @if ($sort == 'Oldest')
@@ -38,6 +38,9 @@
             </div>
         </div>
     </form>
+
+
+    <div class="table_div">
 
     <table class=' mt-4'>
 
@@ -66,7 +69,7 @@
                                 @isset($user->photo)
                                     <img class="user-img" src="{{ asset('uploads/' . $user->photo) }}" alt="">
                                 @else
-                                    <img class="user-img" src="{{ asset('img/user.png') }}" alt="">
+                                    <img class="user-img" src="{{ asset('img/user-null.png') }}" alt="">
                                 @endisset
                             </td>
 
@@ -92,7 +95,7 @@
                                             <form action=" {{ route('ban.user') }}" method="POST">
                                                 @csrf
                                                 <button name="ban" type="submit"
-                                                    class="bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-2 px-4 rounded "
+                                                    class="user_button"
                                                     value="{{ $user->id }}">Ban</button>
                                             </form>
                                         @else
@@ -101,7 +104,7 @@
                                                 @csrf
 
                                                 <button name="Unban" type="submit"
-                                                    class="bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-2 px-4 rounded "
+                                                    class="user_button"
                                                     value="{{ $user->id }}">UnBan</button>
                                             </form>
                                         @endif
@@ -109,7 +112,7 @@
                                         <form action="{{ route('show_edit.user') }}" method="get">
                                             @csrf
                                             <button name="edit" type="submit"
-                                                class="bg-green-500 hover:bg-green-800 text-white font-bold py-2 px-4 rounded ml-1 "
+                                                class="user_button"
                                                 value="{{ $user->id }}">edit</button>
                                         </form>
                                         {{-- delete button --}}
@@ -117,7 +120,7 @@
                                             @csrf
                                             @method('DELETE')
                                             <button name="delete" type="submit"
-                                                class="bg-red-600 hover:bg-red-800 text-white font-bold py-2 px-4 rounded ml-1 "
+                                                class="user_button"
                                                 value="{{ $user->id }}">Delete</button>
                                         </form>
 
@@ -134,7 +137,7 @@
                                                     @endforeach
                                                 </select>
                                                 <button type="submit"
-                                                    class="bg-blue-600 hover:bg-blue-800  text-white font-bold py-2 px-4 rounded ml-1 ">Change</button>
+                                                    class="user_button">Change</button>
                                             </div>
                                         </form>
 
@@ -152,5 +155,6 @@
 
         </tbody>
     </table>
+</div>
 
 @endsection

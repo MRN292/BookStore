@@ -53,7 +53,7 @@ class UserController extends Controller
         $user = User::find($id);
 
         
-         return view('edit', ['user' => $user]);
+        return view('edit', ['user' => $user]);
         // return var_dump($id);
     }
 
@@ -61,12 +61,14 @@ class UserController extends Controller
     public function name_edit(Request $request)
     {
         $id = $request->input('id');
+
         $user = User::find($id);
         $name = request('name');
         if (preg_match("/^[a-zA-Z\s]+$/", $name)) {
             User::where('id', $id)->update(['name' => $name]);
             $massage = 'Saved successfully';
             $user = User::find($id);
+            // return 11;
             return view('edit', ['user' => $user, 'massage' => $massage]);
         } else {
             $massage = 'invalid name';

@@ -44,7 +44,7 @@ class BookController extends Controller
         if (!preg_match("/^(.|\s)*[a-zA-Z]+(.|\s)*$/", $description)) {
             $error_flag = true;
 
-            $description_error = 'invalid name';
+            $description_error = 'invalid input description';
         }
 
 
@@ -96,31 +96,26 @@ class BookController extends Controller
 
 
         } else {
+
             return back()->with([
                 'name_error' => $name_error,
                 'author_error' => $author_error,
+                'description_error' => $description_error,
                 'img_error' =>$img_error,
             ]);
         }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-        // return var_dump($book->id);
-
-
-        // Redirect back to the previous page with a success message
-        // return back()->with('success', 'Photo uploaded successfully!');
-
     }
+
+
+
+    public function show(){
+        $books = Book::all();
+        return view('Books' , ['books' => $books]);
+            
+    }
+
+
+
 }

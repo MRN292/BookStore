@@ -52,8 +52,14 @@ Route::post('/TagsAndGenre/AddGenre',[CategoryController::class, 'add'])->name('
 
 
 //add book
-Route::get('/addBoook',[TagsandCategory::class, 'add_book'])->name('add_book');
+Route::get('/addBook',[TagsandCategory::class, 'add_book'])->name('add_book');
 Route::post('/addBook/add',[BookController::class, 'add'])->name('insert_book');
+
+
+
+//Books 
+
+Route::get('/showBooks',[BookController::class, 'show'])->name('show_books');
 
 
 
