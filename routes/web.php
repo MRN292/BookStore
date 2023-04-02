@@ -5,6 +5,7 @@ use App\Http\Controllers\TagController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\TagsandCategory;
+use App\Http\Controllers\UserBookController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -58,12 +59,25 @@ Route::post('/addBook/add',[BookController::class, 'add'])->name('insert_book');
 
 
 //Books 
+Route::get('/books',[BookController::class, 'show'])->name('show.books');
+Route::get('/books/edit',[BookController::class, 'show_edit'])->name('show_edit.books');
+Route::post('/books/edit',[BookController::class, 'edit'])->name('edit.books');
+Route::delete('/books/delete',[BookController::class, 'delete'])->name('delete.books');
 
-Route::get('/',[BookController::class, 'show'])->name('show_books');
 
 
 
 
+// shop
+Route::get('/',[BookController::class, 'shop'])->name('shop');
+
+
+
+
+//cart
+
+
+Route::get('/cart',[UserBookController::class, 'show'])->name('show.cart');
 
 
 

@@ -29,7 +29,7 @@
             <a href="{{ route('show.user') }}">Users</a>
 
             <a href="{{ route('add_book') }}">New Book</a>
-            <a href="{{ route('show_books')}}">Books</a>
+            <a href="{{ route('show.books')}}">Books</a>
             <a href="{{ route('tags_and_genres') }}">Tags and Genre</a>
 
             <form method="POST" action="{{ route('logout') }}">
@@ -54,7 +54,7 @@
                 <img class="user-img" src="{{ asset('uploads/' . Auth::user()->photo) }}" alt="">
             @endif
             <span class="user-name">{{ Auth::user()->name }}</span>
-            <a class="cart-img" href=""><img src="{{ asset('img/cart.png') }}" alt=""></a>
+            <a class="cart-img" href="{{route('show.cart')}}"><img src="{{ asset('img/cart.png') }}" alt=""></a>
         @else
             <img class="user-img" src="{{ asset('img/user.png') }}" alt="">
             <a href="{{ route('login') }}">Login</a>

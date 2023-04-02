@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('cate_books', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('cate_id');
+            $table->unsignedBigInteger('category_id');
             $table->unsignedBigInteger('book_id');
             $table->timestamps();
             $table->softDeletes();
             
-            $table->foreign('cate_id')->references('id')->on('categories')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreign('category_id')->references('id')->on('categories')->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreign('book_id')->references('id')->on('books')->cascadeOnDelete()->cascadeOnUpdate();
         });
     }
